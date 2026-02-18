@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-obsidian-900 text-slate-300 font-sans antialiased selection:bg-acid-500 selection:text-obsidian-900;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-display text-white tracking-tight;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-obsidian-950;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-obsidian-700 rounded-full hover:bg-obsidian-600;
+    }
+}
+
+@layer utilities {
+    .glass-panel {
+        @apply bg-glass-surface backdrop-blur-xl border border-glass-border shadow-glass;
+    }
+
+    .text-glow {
+        text-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
+    }
+}
+
+/* ===== Phase-based Hybrid Canvas Styles ===== */
+
+/* INIT + DESIGN phases: Light, airy, editorial feel */
+.phase-canvas-light {
+    @apply bg-slate-50;
+}
+
+.phase-canvas-light .glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.phase-canvas-light h1,
+.phase-canvas-light h2,
+.phase-canvas-light h3 {
+    @apply text-slate-900;
+}
+
+.phase-canvas-light p,
+.phase-canvas-light span,
+.phase-canvas-light label {
+    color: inherit;
+}
+
+.phase-canvas-light .text-slate-300 {
+    color: #475569;
+    /* slate-600 */
+}
+
+.phase-canvas-light .text-slate-400 {
+    color: #64748b;
+    /* slate-500 */
+}
+
+.phase-canvas-light .text-slate-500 {
+    color: #94a3b8;
+    /* slate-400 */
+}
+
+.phase-canvas-light .text-white {
+    color: #0f172a;
+    /* slate-900 */
+}
+
+.phase-canvas-light .text-slate-200 {
+    color: #334155;
+    /* slate-700 */
+}
+
+.phase-canvas-light .bg-obsidian-800 {
+    @apply bg-white;
+}
+
+.phase-canvas-light .border-glass-border {
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.phase-canvas-light input,
+.phase-canvas-light textarea {
+    @apply bg-white border-slate-200 text-slate-800 placeholder-slate-400;
+}
+
+.phase-canvas-light input:focus,
+.phase-canvas-light textarea:focus {
+    @apply ring-acid-600 border-acid-600;
+}
+
+.phase-canvas-light .bg-white\/5 {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.phase-canvas-light .bg-acid-500\/5 {
+    background: rgba(204, 255, 0, 0.06);
+}
+
+.phase-canvas-light .hover\:bg-white\/5:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* RULES + COMPILE phases: Darker, console-like feel */
+.phase-canvas-dark {
+    @apply bg-obsidian-950;
+}
+
+.phase-canvas-dark .glass-panel {
+    background: rgba(15, 16, 20, 0.9);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Smooth phase transition */
+.phase-canvas-light,
+.phase-canvas-dark {
+    transition: background-color 0.3s ease;
+}
+
+/* Compile phase specific animation */
+@keyframes compileProgress {
+    0% {
+        width: 0%;
+    }
+
+    60% {
+        width: 85%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.compile-progress-bar {
+    animation: compileProgress 1.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out forwards;
+}
+
+/* Phase card hover micro-interaction */
+.phase-card-interactive {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.phase-card-interactive:hover {
+    transform: translateY(-1px);
+}
